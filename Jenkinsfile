@@ -1,12 +1,14 @@
 pipeline {
     agent { label 'JDK_8' }
-    triggers {
+    triggers { 
         pollSCM('* * * * *')
-    }    
+    }
     stages {
         stage('vcs') {
-            git url: 'https://github.com/qtrajkumarmarch23/StudentCoursesRestAPI.git',
-                branch: 'develop'
+            steps {
+                git url: 'https://github.com/qtrajkumarmarch23/StudentCoursesRestAPI.git',
+                    branch: 'develop'
+            }
         }
         stage('build') {
             steps {
@@ -17,7 +19,8 @@ pipeline {
             steps {
                 sh 'echo docker scan rajkumar207/spc:latest'
                 sh 'docker image push rajkumar207/spc:latest'
-            }    
-        }          
+            }
+        }
     }
+
 }
