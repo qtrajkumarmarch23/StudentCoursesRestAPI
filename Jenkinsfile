@@ -17,7 +17,7 @@ pipeline {
         }
         stage('scan and push') {
             steps {
-                sh 'echo docker scan rajkumar207/spc:latest'
+                sh 'docker scan rajkumar207/spc:latest'
                 sh 'docker image push rajkumar207/spc:latest'
             }
         }
